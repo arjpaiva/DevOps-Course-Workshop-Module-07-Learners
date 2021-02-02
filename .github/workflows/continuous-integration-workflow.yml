@@ -10,6 +10,7 @@ jobs:
         dotnet-version: [ '3.1.x' ]
     env:
       ACTIONS_ALLOW_UNSECURE_COMMANDS: true
+      SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
 
     steps:
     - uses: actions/checkout@v2 # Adds a step to checkout the repository code
@@ -35,3 +36,8 @@ jobs:
     - name: Run lint on TypeScript
       working-directory: DotnetTemplate.Web
       run: npm run lint
+
+    - name: Integration with Slack
+      with:
+        status: ${{ job.status }}
+        steps: ${{ toJson(steps) }}
