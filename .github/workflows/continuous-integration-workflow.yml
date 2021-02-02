@@ -25,4 +25,13 @@ jobs:
     - name: Test
       run: dotnet test #--no-restore --verbosity normal
     - name: Build TypeScript
-      run: cd DotnetTemplate.Web && npm install && npm run build
+      working-directory: DotnetTemplate.Web
+      run: |
+        npm install
+        npm run build
+    - name: Test TypeScript
+      working-directory: DotnetTemplate.Web
+      run: npm t
+    - name: Run lint on TypeScript
+      working-directory: DotnetTemplate.Web
+      run: npm run lint
