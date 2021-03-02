@@ -39,6 +39,6 @@ jobs:
 
     - name: Publish image to docker hub
       run: |
-        docker build --tag workshop8/dotnettemplate .
+        docker build --tag ritapaiva/dotnettemplate .
         docker login -u ${{secrets.DOCKER_USERNAME}} -p ${{secrets.DOCKER_PASSWORD}}
-        docker push workshop8/dotnettemplate  
+        docker push ritapaiva/dotnettemplate  
