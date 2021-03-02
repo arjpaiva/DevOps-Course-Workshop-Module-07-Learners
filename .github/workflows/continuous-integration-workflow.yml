@@ -37,13 +37,7 @@ jobs:
       working-directory: DotnetTemplate.Web
       run: npm run lint
 
-    - name: Integration with Slack
-      uses: actions/slack-github-actions-slack-integration
-      with:
-        status: ${{ job.status }}
-        steps: ${{ toJson(steps) }}
-
-    - name: Publish image to docker hub
+      - name: Publish image to docker hub
       run: |
         docker build --tag workshop8/dotnettemplate .
         docker login -u ${{secrets.DOCKER_USERNAME}} -p ${{secrets.DOCKER_PASSWORD}}
