@@ -37,7 +37,7 @@ jobs:
       working-directory: DotnetTemplate.Web
       run: npm run lint
 
-      - name: Publish image to docker hub
+    - name: Publish image to docker hub
       run: |
         docker build --tag workshop8/dotnettemplate .
         docker login -u ${{secrets.DOCKER_USERNAME}} -p ${{secrets.DOCKER_PASSWORD}}
