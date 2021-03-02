@@ -38,6 +38,7 @@ jobs:
       run: npm run lint
 
     - name: Integration with Slack
+      uses: actions/slack-github-actions-slack-integration
       with:
         status: ${{ job.status }}
         steps: ${{ toJson(steps) }}
